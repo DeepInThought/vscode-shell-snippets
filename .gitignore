@@ -1,0 +1,13 @@
+# See https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore 
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# See https://github.com/github/gitignore/blob/master/Global/Backup.gitignore
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
