@@ -1,0 +1,41 @@
+{
+    "name": "vscode-shell-snippets",
+    "displayName": "Visual Studio Code Shell Snippets",
+    "description": "This extension adds shell script snippets for fast scripting.",
+    "version": "0.1.0",
+    "publisher": "DeepInThought",
+    "icon": "images/bash-128x128.png",
+    "galleryBanner": {
+        "color": "#C80000",
+        "theme": "dark"
+    },
+    "author": {
+        "name": "Luke Penrod",
+        "email": "support@deepinthought.io",
+        "url": "https://deepinthought.io"
+    },
+    "license": "SEE LICENSE IN DEEPLICENSE",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Snippets",
+        "Keymaps"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "shellscript",
+                "path": "./snippets/shellscript.json"
+            },
+            {
+                "language": "shellscript",
+                "path": "./snippets/frequently-used.json"
+            }
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DeepInThought/vscode-shell-snippets.git"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "file_read_by_line":{
+        "prefix": "file_read_by_line",
+        "body": "cat $${0:FILE_NAME} | while read ${1:LINE}\ndo\n\techo $${1:LINE}\ndone\n",
+        "description": "read a text file line by line"
+    },
+    "file_batch_rename":{
+        "prefix": "file_batch_rename",
+        "body": "ls | xargs -i mv {} {}.old",
+        "description": "batch rename files"
+    },
+    "awk_substr":{
+        "prefix": "awk_substr",
+        "body": "echo $VAR | awk '\\{print substr(\\$0,0,length(\\$0)-2)\\}'",
+        "description": "sub string by awk"
+    },
+    "awk_printf":{
+        "prefix": "awk_printf",
+        "body": "awk  -F ':'  '\\{printf(\"filename:%10s,linenumber:%s,columns:%s,linecontent:%s\n\",FILENAME,NR,NF,\\$0)\\}' /etc/passwd",
+        "description": "printf example of awk"
+    },
+    "awk_for_loop":{
+        "prefix": "awk_for_loop",
+        "body": "awk -F ':' 'BEGIN \\{count=0;} \\{name[count] = \\$1;count++;\\}; END{for (i = 0; i < NR; i++) print i, name[i]\\}' /etc/passwd",
+        "description": "for loop example of awk, show all users"
+    }
+}
