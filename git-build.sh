@@ -3,15 +3,16 @@
 ### @Author : Luke Penrod - support@deepinthought.io
 ### @Company : DeepInThought
 ### @Link   : https://deepinthought.io
-### @Date   : Saturday,September 29 2018 11:26:22
+### @Created   : Saturday,September 29 2018 11:26:22
+### @Modified : Saturday,September 29 2018 15:21:16
 ###-
+
 
 echo -e "\\033[0;32mDeploying updates to GitHub...\\033[0m"
 export ROOT_PATH="${HOME}/Documents"
 export GIT_LOCAL_PATH="${ROOT_PATH}/vscode-shell-snippets"
 export GIT_REPOSITORY="https://github.com/DeepInThought/vscode-shell-snippets.git"
 export GIT_RAW_TEST="https://raw.githubusercontent.com/DeepInThought/vscode-shell-snippets/master/README.md"
-export GIT_COMMIT_MSG=
 
 __username="$(whoami)"
 __dir="$(cd "$(dirname "${HOME}"/"${__username}")" && pwd)"
@@ -46,56 +47,58 @@ handle_exit_code() {
 	fi
 	printf -- '\033[31m [ERROR] occurred.  Cleaning up now...\033[0m\n'
 	### Cleanup
-    printf -- '\033[33m [CLEAN]: Cleaning exit properly.\n\033[31m [EXIT] with error code %s.\n' "${ERROR_CODE}"
+	printf -- '\033[33m [CLEAN]: Cleaning exit properly.\n\033[31m [EXIT] with error code %s.\n' "${ERROR_CODE}"
 	exit "${ERROR_CODE}"
 }
 trap "handle_exit_code" EXIT
 
-if [ -d "${GIT_RAW_TEST}" ]; then
+# todo: Setup git credential fill
+### $(git credential fill \
+###    protocol=https \
+###    host="$GIT_REPOSITORY" \
+###    username=deepinthought \
+###    password="$GITHUB_PASSWORD" \
+###    )
+
+if [ ! "${GIT_RAW_TEST}" ]; then
 	echo "[Testing]: ${GIT_RAW_TEST} exists."
-	curl "${GIT_RAW_TEST}" && echo || exit 2
-    printf -- '\033[32m [SUCCESS]: %s \033[0m\n' ${GIT_RAW_TEST}
+	curl "${GIT_RAW_TEST}" || echo || exit 2
+	printf -- '\033[32m [SUCCESS]: %s \033[0m\n' ${GIT_RAW_TEST}
 	sleep 1
-else
+fi
+if [ ! -d "${GIT_LOCAL_PATH}" ]; then
 	echo "[GIT_RAW_TEST]: Not Setup! ${GIT_RAW_TEST}"
-	git clone "${ROOT_PATH}/${GIT_REPOSITORY}" && echo || exit 2
+	git clone "${GIT_REPOSITORY}" || echo || exit 2
 	printf -- '\033[32m [SUCCESS]: %s \033[0m\n' "${GIT_LOCAL_PATH}"
 	sleep 1
 fi
 if [ $# -eq 1 ]; then
-	${GIT_COMMIT_MSG}="$1"
+	GIT_COMMIT_MSG=$1
 	${GIT_REPOSITORY:-'https://github.com/DeepInThought/vscode-shell-snippets.git'}
 	echo "[Git Comment]: ${GIT-GIT_COMMIT_MSG}"
 	echo "[Git Repository]: ${GIT_REPOSITORY}"
-    git commit -m ${GIT_COMMIT_MSG} || printf -- '\033[32m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE} && exit 1
-    printf -- '\033[32m [Git Commit]: [FINISHED] without errors. \033[0m\n'
-else
-    ${GIT_COMMIT_MSG:-"echo [Git Commit]: on $(date --rfc-3339=seconds)"}
-    git commit -m ${GIT_COMMIT_MSG} || printf -- '\033[32m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE} && exit 1
-    printf -- '\033[32m [Git Commit]: [FINISHED] without errors. \033[0m\n'
+	git commit -m "${GIT_COMMIT_MSG}" || printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE:-1} || exit 1
+	printf -- '\033[32m [Git Commit]: [FINISHED] without errors. \033[0m\n'
 fi
 if [ $# -eq 2 ]; then
-	echo "[Git Comment]: ${GIT-COMMIT}"
-	echo "Commit on: $(date --rfc-3339=seconds)"
-	git commit -m ${GIT_COMMIT_MSG} || printf -- '\033[32m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE} && exit 1
+    GIT_COMMIT_MSG="[Git Commit]: at $(date --rfc-3339=seconds)"
+	echo "[Git Comment]: ${GIT_COMMIT_MSG}"
+	echo "[Git Commit]: at $(date --rfc-3339=seconds)"
+	git commit -m "${GIT_COMMIT_MSG}" || printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE:-2} || exit 1
 	printf -- '\033[32m [Git Commit]: [FINISHED] without errors. \033[0m\n'
 else
-	echo "Commit on: $(date --rfc-3339=seconds)" && echo "${GIT_COMMIT_MSG}"
+    GIT_COMMIT_MSG="[Git Commit]: at $(date --rfc-3339=seconds)"
+    echo "[Git Message]: ${GIT_COMMIT_MSG}"
+	git commit -m "${GIT_COMMIT_MSG}" || printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE:-1} || exit 1
+	printf -- '\033[32m [Git Commit]: [FINISHED] without errors. \033[0m\n'
 fi
 
-cd "${GIT_LOCAL_PATH}" || exit 2
-# Add changes to git.
-git add .
-
-# Commit changes.
-msg="rebuilding site $(date) $theme_name"
-if [ $# -eq 2 ]; then
-	msg="$2"
+if [ -d "${GIT_LOCAL_PATH}" ]; then
+	cd "${GIT_LOCAL_PATH}" || echo "Current Dir: $PWD" || exit 2
+    printf -- '\033[32m [SUCCESS]: %s \033[0m\n' "${GIT_LOCAL_PATH}"
+	git add . || echo || exit 1
+    printf -- '\033[32m [SUCCESS]: git add . \033[0m\n' 
+    ### Push and build the repository
+    git push origin master || printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE:-1} || exit 1
+	printf -- '\033[32m [SUCCESS]: git push origin master \033[0m\n' 
 fi
-git commit -m "$msg"
-
-# Push source and build repos.
-git push origin master
-
-# Come Back up to the Project Root
-cd ..
