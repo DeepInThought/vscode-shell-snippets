@@ -4,15 +4,19 @@ Code snippets of shell commands, functions and scripts for visual studio code.
 <!-- TOC depthFrom:2 -->
 
 1. [Visual Studio Code Shell Snippets](#visual-studio-code-shell-snippets)
-	1. [Snippets](#snippets)
+	1. [Source Code](#source-code)
+	2. [Snippets](#snippets)
 		1. [Basic code](#basic-code)
 		2. [Frequently used snippets](#frequently-used-snippets)
-	2. [Installation](#installation)
-	3. [About Us](#about-us)
-	4. [Links](#links)
+	3. [Installation](#installation)
+	4. [About Us](#about-us)
 		1. [Licensing Information](#licensing-information)
 
 <!-- /TOC -->
+
+## Source Code
+
+Repository Home: [https://github.com/DeepInThought/vscode-shell-snippets.git](https://github.com/DeepInThought/vscode-shell-snippets.git)
 
 ## Snippets
 
@@ -50,10 +54,8 @@ ext install vscode-shell-snippets
 
 Visit [README.deepIT.md](README.deepIT.md) for more information on [@DeepInThought]((https://github.com/DeepInThought)).
 
-## Links
-
-* [Source Code](https://github.com/DeepInThought/vscode-shell-links)
- <!-- [Market]() -->
+<!-- ## Links -->
+<!-- [Market]() -->
 
 ### Licensing Information
 
