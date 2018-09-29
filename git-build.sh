@@ -13,6 +13,7 @@ export ROOT_PATH="${HOME}/Documents"
 export GIT_LOCAL_PATH="${ROOT_PATH}/vscode-shell-snippets"
 export GIT_REPOSITORY="https://github.com/DeepInThought/vscode-shell-snippets.git"
 export GIT_RAW_TEST="https://raw.githubusercontent.com/DeepInThought/vscode-shell-snippets/master/README.md"
+export ERROR_CODE=
 
 __username="$(whoami)"
 __dir="$(cd "$(dirname "${HOME}"/"${__username}")" && pwd)"
@@ -30,7 +31,7 @@ handle_exit_code() {
 		exit ${ERROR_CODE}
 	fi
 	if [ "${ERROR_CODE}" = "1" ]; then
-		printf -- '\033[31m [ERROR CODE %s]: ERROR_CODE %s primary to echo call failed.\033[0m\n' ${ERROR_CODE} ${ERROR_CODE}
+		printf -- '\033[31m [ERROR CODE %s]: ERROR_CODE %s is related to Git repositories.\033[0m\n' ${ERROR_CODE} ${ERROR_CODE}
 		printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' "${ERROR_CODE}"
 		exit ${ERROR_CODE}
 	fi
