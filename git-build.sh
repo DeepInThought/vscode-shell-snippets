@@ -88,17 +88,23 @@ if [ $# -eq 2 ]; then
 	printf -- '\033[32m [Git Commit]: [FINISHED] without errors. \033[0m\n'
 else
     GIT_COMMIT_MSG="[Git Commit]: at $(date --rfc-3339=seconds)"
-    echo "[Git Message]: ${GIT_COMMIT_MSG}"
-	git commit -m "${GIT_COMMIT_MSG}" || printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE:-1} || exit 1
+    echo "[Auto]: Setting GIT_COMMIT_MSG to ${GIT_COMMIT_MSG}"
 	printf -- '\033[32m [Git Commit]: [FINISHED] without errors. \033[0m\n'
 fi
 
 if [ -d "${GIT_LOCAL_PATH}" ]; then
 	cd "${GIT_LOCAL_PATH}" || echo "Current Dir: $PWD" || exit 2
     printf -- '\033[32m [SUCCESS]: %s \033[0m\n' "${GIT_LOCAL_PATH}"
-	git add . || echo || exit 1
+	
+    ### Setup for commit.
+    git add . || echo || exit 1
     printf -- '\033[32m [SUCCESS]: git add . \033[0m\n' 
-    ### Push and build the repository
+
+    ### Commit changes.
+    git commit -m "${GIT_COMMIT_MSG}" || printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE:-1} || exit 1
+    printf -- '\033[32m [SUCCESS]: git commit -m \033[0m\n'
+
+    ### Push code to Repository
     git push origin master || printf -- '\033[31m [EXIT] with status code %s.\033[0m\n' ${ERROR_CODE:-1} || exit 1
-	printf -- '\033[32m [SUCCESS]: git push origin master \033[0m\n' 
+    printf -- '\033[32m [SUCCESS]: git push origin master \033[0m\n' 
 fi
