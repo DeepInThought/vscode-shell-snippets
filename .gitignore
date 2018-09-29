@@ -11,3 +11,10 @@
 *.ori
 *.orig
 *.tmp
+
+# https://github.com/Microsoft/vscode-extension-samples/blob/master/.gitignore
+.DS_Store
+npm-debug.log
+Thumbs.db
+*/node_modules/
+*/out/
