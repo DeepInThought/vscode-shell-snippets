@@ -1,5 +1,7 @@
 # Visual Studio Code Shell Snippets
 
+[README.md](https://raw.githubusercontent.com/DeepInThought/vscode-shell-snippets/master/README.md).
+
 Code snippets of shell commands, functions and scripts for visual studio code.
 <!-- TOC depthFrom:2 -->
 
