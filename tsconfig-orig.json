@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+		"outDir": "out",
+		"noEmitOnError": true,
+		"noImplicitAny": false,
+        "lib": [
+            "es6"
+        ],
+        "sourceMap": true,
+		"rootDir": "src",
+	},
+    "exclude": [
+        "node_modules",
+        ".vscode-test"
+	],
+	"include": [
+		"src/**/*.ts",
+        "spec/**/*.ts"
+	],
+    "files": [
+        "src/srv/config.json"
+    ]
+}
