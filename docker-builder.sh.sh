@@ -6,5 +6,5 @@
 ### @Date   : Saturday,September 29 2018 01:53:45
 ###-
 
-docker build $PWD/ -t deepinthought/vscode-shell-snippets:latest
+docker build . -t deepinthought/vscode-shell-snippets:latest
 docker push deepinthought/vscode-shell-snippets:latest
