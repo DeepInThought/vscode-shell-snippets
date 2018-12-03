@@ -2,7 +2,7 @@
     "name": "vscode-shell-snippets",
     "displayName": "Visual Studio Code Shell Snippets",
     "description": "This extension adds shell script snippets for fast scripting.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "DeepInThought",
     "icon": "images/bash-128x128.png",
     "galleryBanner": {

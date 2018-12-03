@@ -52,12 +52,6 @@ handle_exit_code() {
 }
 trap "handle_exit_code" EXIT
 
-# if [ $1 -eq "--setup" ]; then
-# 	echo "[Setup Git]:"
-# 	read $x;
-# fi
-
-
 # todo: Setup git credential fill
 ### $(git credential fill \
 ###    protocol=https \
