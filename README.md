@@ -1,21 +1,28 @@
 # Visual Studio Code Shell Snippets
 
-[README.md](https://raw.githubusercontent.com/DeepInThought/vscode-shell-snippets/master/README.md).
-
 Code snippets of bash shell commands, functions and scripts for visual studio code.
 <!-- TOC depthFrom:2 -->
 
 [Visual Studio Code Shell Snippets](#visual-studio-code-shell-snippets)
 
-  1. [Source Code](#source-code)
-  2. [Snippets](#snippets)
+  1. [Installation](#installation)
+  2. [Source Code](#source-code)
+  3. [Snippets](#snippets)
        1. [Common](#common)
-       2. [Frequently used snippets](#frequently-used-snippets)
-  3. [Installation](#installation)
+       2. [Tests](#tests)
+       3. [Bulk](#bulk)
   4. [About Us](#about-us)
        1. [Licensing Information](#licensing-information)
 
 <!-- /TOC -->
+
+## Installation
+
+Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
+
+```typescript
+ext install vscode-shell-snippets
+```
 
 ## Source Code
 
@@ -32,11 +39,16 @@ JSON File: [snippets/shellscript.json](snippets/shellscript.json)
 * for/while/until/break
 * function
 * case expr
+
+### Tests
+
+JSON File: [snippets/tests.json](snippets/tests.json)
+
 * test int/string/file
 
-### Frequently used snippets
+### Bulk
 
-JSON File: [snippets/frequently-used.json](snippets/frequently-used.json)
+JSON File: [snippets/bulk-snippets.json](snippets/bulk-snippets.json)
 
 * read file by line
 * batch rename files
@@ -44,14 +56,6 @@ JSON File: [snippets/frequently-used.json](snippets/frequently-used.json)
   * substr
   * printf
   * for loop
-
-## Installation
-
-Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
-
-```typescript
-ext install vscode-shell-snippets
-```
 
 ## About Us
 

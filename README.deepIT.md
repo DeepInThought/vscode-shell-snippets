@@ -10,5 +10,4 @@ By [@DeepInThought](https://github.com/DeepInThought).
 
 * Official Website - [https://www.deepinthought.io](https://www.deepinthought.io)
 * Email - [support@deepinthought.io](mailto:support@deepinthought.io).  
-* LinkedIn - [LinkedIn](https://www.linkedin.com/company/deepinthought_io/)
 * GitHub - [Github](https://github.com/DeepInThought)
