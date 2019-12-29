@@ -2,17 +2,18 @@
 
 [README.md](https://raw.githubusercontent.com/DeepInThought/vscode-shell-snippets/master/README.md).
 
-Code snippets of shell commands, functions and scripts for visual studio code.
+Code snippets of bash shell commands, functions and scripts for visual studio code.
 <!-- TOC depthFrom:2 -->
 
-1. [Visual Studio Code Shell Snippets](#visual-studio-code-shell-snippets)
-	1. [Source Code](#source-code)
-	2. [Snippets](#snippets)
-		1. [Basic code](#basic-code)
-		2. [Frequently used snippets](#frequently-used-snippets)
-	3. [Installation](#installation)
-	4. [About Us](#about-us)
-		1. [Licensing Information](#licensing-information)
+[Visual Studio Code Shell Snippets](#visual-studio-code-shell-snippets)
+
+  1. [Source Code](#source-code)
+  2. [Snippets](#snippets)
+       1. [Common](#common)
+       2. [Frequently used snippets](#frequently-used-snippets)
+  3. [Installation](#installation)
+  4. [About Us](#about-us)
+       1. [Licensing Information](#licensing-information)
 
 <!-- /TOC -->
 
@@ -22,7 +23,7 @@ Repository Home: [https://github.com/DeepInThought/vscode-shell-snippets.git](ht
 
 ## Snippets
 
-### Basic code
+### Common
 
 JSON File: [snippets/shellscript.json](snippets/shellscript.json)
 

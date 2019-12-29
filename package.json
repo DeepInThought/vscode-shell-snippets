@@ -1,8 +1,8 @@
 {
     "name": "vscode-shell-snippets",
     "displayName": "Visual Studio Code Shell Snippets",
-    "description": "This extension adds shell script snippets for fast scripting.",
-    "version": "0.2.0",
+    "description": "This extension adds Bash shell script snippets for fast scripting.",
+    "version": "0.3.0",
     "publisher": "DeepInThought",
     "icon": "images/bash-128x128.png",
     "galleryBanner": {
@@ -10,13 +10,13 @@
         "theme": "dark"
     },
     "author": {
-        "name": "Luke Penrod",
+        "name": "DeepInThought",
         "email": "support@deepinthought.io",
-        "url": "https://deepinthought.io"
+        "url": "https://www.deepinthought.io"
     },
-    "license": "SEE LICENSE IN DEEPLICENSE",
+    "license": "SEE LICENSE.md",
     "engines": {
-        "vscode": "^1.18.0",
+        "vscode": "^1.30.0",
         "node": ">=4.2.0"
     },
     "categories": [
@@ -31,7 +31,17 @@
             },
             {
                 "language": "shellscript",
-                "path": "./snippets/frequently-used.json"
+                "path": "./snippets/bulk-snippets.json"
+            },
+            {
+                "language": "shellscript",
+                "path": "./snippets/tests.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.vscodeShellSnippets",
+                "title": "ShellSnippets: Info"
             }
         ]
     },
@@ -39,99 +49,39 @@
         "type": "git",
         "url": "https://github.com/DeepInThought/vscode-shell-snippets.git"
     },
+    "bugs": {
+        "email": "support@deepinthought.io",
+        "url": "https://github.com/DeepInThought/vscode-shell-snippets/issues"
+    },
+    "homepage": "https://github.com/DeepInThought/vscode-shell-snippets/blob/master/README.md",
     "config": {
         "configFileName": "tsconfig.json"
     },
-    "main": "./lib/typescript.js",
-    "typings": "./lib/typescript.d.ts",
+    "activationEvents": [
+        "onCommand:extension.vscodeShellSnippets"
+    ],
+    "main": "./out/extension.js",
+    "typings": "./out/extension.d.ts",
     "bin": {
         "tsc": "./bin/tsc",
         "tsserver": "./bin/tsserver"
     },
     "scripts": {
-        "pretest": "jake tests",
-        "test": "jake runtests-parallel light=false",
-        "build": "npm run build:compiler && npm run build:tests",
-        "build:compiler": "jake local",
-        "build:tests": "jake tests",
-        "start": "node lib/tsc",
-        "clean": "jake clean",
-        "gulp": "gulp",
-        "jake": "jake",
-        "lint": "jake lint",
-        "setup-hooks": "node scripts/link-hooks.js"
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile",
+        "test": "node ./out/test/runTest.js"
     },
     "devDependencies": {
-        "@octokit/rest": "latest",
-        "@types/browserify": "latest",
-        "@types/chai": "latest",
-        "@types/convert-source-map": "latest",
-        "@types/del": "latest",
-        "@types/glob": "latest",
-        "@types/gulp": "3.X",
-        "@types/gulp-concat": "latest",
-        "@types/gulp-help": "latest",
-        "@types/gulp-if": "0.0.33",
-        "@types/gulp-newer": "latest",
-        "@types/gulp-rename": "0.0.33",
-        "@types/gulp-sourcemaps": "0.0.32",
-        "@types/jake": "latest",
-        "@types/merge2": "latest",
-        "@types/minimatch": "latest",
-        "@types/minimist": "latest",
-        "@types/mkdirp": "latest",
-        "@types/mocha": "latest",
-        "@types/node": "8.5.5",
-        "@types/q": "latest",
-        "@types/run-sequence": "latest",
-        "@types/source-map-support": "latest",
-        "@types/through2": "latest",
-        "@types/travis-fold": "latest",
-        "@types/xml2js": "^0.4.0",
-        "browser-resolve": "^1.11.2",
-        "browserify": "latest",
-        "chai": "latest",
-        "chalk": "latest",
-        "convert-source-map": "latest",
-        "del": "latest",
-        "fancy-log": "latest",
-        "fs-extra": "^6.0.1",
-        "gulp": "^4.0.0",
-        "gulp-clone": "latest",
-        "gulp-concat": "latest",
-        "gulp-help": "latest",
-        "gulp-if": "latest",
-        "gulp-insert": "latest",
-        "gulp-newer": "latest",
-        "gulp-rename": "latest",
-        "gulp-sourcemaps": "latest",
-        "gulp-typescript": "latest",
-        "istanbul": "latest",
-        "jake": "^8.0.19",
-        "lodash": "4.17.10",
-        "merge2": "latest",
-        "minimist": "latest",
-        "mkdirp": "latest",
-        "mocha": "latest",
-        "mocha-fivemat-progress-reporter": "latest",
-        "plugin-error": "latest",
-        "prex": "^0.4.3",
-        "q": "latest",
-        "remove-internal": "^2.9.2",
-        "run-sequence": "latest",
-        "source-map-support": "latest",
-        "through2": "latest",
-        "travis-fold": "latest",
-        "tslint": "latest",
-        "typescript": "^3.2.1",
-        "typescript-tools": "^0.3.1",
-        "vinyl": "latest",
-        "vinyl-sourcemaps-apply": "latest",
-        "xml2js": "^0.4.19"
-    },
-    "browser": {
-        "fs": false,
-        "os": false,
-        "path": false
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^13.1.1",
+        "@types/vscode": "^1.30.0",
+        "glob": "^7.1.6",
+        "mocha": "^6.2.2",
+        "typescript": "^3.7.4",
+        "tslint": "^5.20.1",
+        "vscode-test": "^1.3.0"
     }
 }

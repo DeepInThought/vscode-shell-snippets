@@ -1,6 +1,6 @@
 # todo:
 [x] Add snippets: https://code.visualstudio.com/docs/editor/userdefinedsnippets
 [x] Publish to marketplace: https://marketplace.visualstudio.com/manage/publishers/deepinthought 
-[] Follow guildlines: https://code.visualstudio.com/docs/extensionAPI/extension-manifest
-[] Add colors: https://misc.flogisoft.com/bash/tip_colors_and_formatting
-[] Add flags: https://codeburst.io/13-tips-tricks-for-writing-shell-scripts-with-awesome-ux-19a525ae05ae
+[x] Follow guildlines: https://code.visualstudio.com/docs/extensionAPI/extension-manifest
+[-] Add colors: https://misc.flogisoft.com/bash/tip_colors_and_formatting
+[-] Add flags: https://codeburst.io/13-tips-tricks-for-writing-shell-scripts-with-awesome-ux-19a525ae05ae
