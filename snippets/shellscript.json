@@ -18,8 +18,8 @@
     },
     "echo": {
         "prefix": "echo",
-        "body": "echo \"${0:message}\"",
-        "description": "Echo a message."
+        "body": "echo \"${0:message}\"", 
+        "description": "Echo a message." 
     },
     "read": {
         "prefix": "read",
